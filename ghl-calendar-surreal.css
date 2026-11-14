@@ -39,6 +39,14 @@
 .vdpCell.disabled .vdpCellContent{ color:#3B4A5E !important; }
 .vdpCell.selected .vdpCellContent{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; color:var(--sg-on) !important; font-weight:700 !important; box-shadow:0 8px 20px -8px rgba(79,166,255,.5) !important; }
 .widgets-time-slots{ gap:10px !important; padding:0 31px 8px 0 !important; }
+
+/* ============ SCROLLBAR PADRONIZADO (navy-glass, fino e flutuante) ============ */
+html, body, .hl-app *{ scrollbar-width:thin !important; scrollbar-color:rgba(79,166,255,.40) transparent !important; }
+html::-webkit-scrollbar, body::-webkit-scrollbar, .hl-app ::-webkit-scrollbar{ width:10px !important; height:10px !important; }
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, .hl-app ::-webkit-scrollbar-track{ background:transparent !important; }
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, .hl-app ::-webkit-scrollbar-thumb{ background:rgba(79,166,255,.32) !important; border-radius:999px !important; border:3px solid transparent !important; background-clip:padding-box !important; }
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover, .hl-app ::-webkit-scrollbar-thumb:hover{ background:rgba(79,166,255,.55) !important; }
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, .hl-app ::-webkit-scrollbar-corner{ background:transparent !important; }
 .widgets-time-slot{ background:var(--sg-panel) !important; border:1px solid var(--sg-border) !important; color:var(--sg-link) !important; border-radius:11px !important; font-weight:600 !important; overflow:hidden !important; transition:border-color .15s ease, background-color .15s ease, box-shadow .15s ease !important; }
 .widgets-time-slot > *, .widgets-time-slot span, .widgets-time-slot .btn, .widgets-time-slot button{ background:transparent !important; background-color:transparent !important; border:0 !important; color:var(--sg-link) !important; }
 .widgets-time-slot:hover{ border-color:var(--sg-accent2) !important; background:#122032 !important; box-shadow:0 0 0 3px var(--sg-focus) !important; }
