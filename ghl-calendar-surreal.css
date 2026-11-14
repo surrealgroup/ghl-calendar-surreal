@@ -1,0 +1,314 @@
+/* ==============================================================================
+   SURREAL GROUP · Design System de AGENDA (GoHighLevel / LeadConnector · Neo)
+   Fonte unica reutilizavel. Aplicar no calendario GHL com UMA linha:
+   <link rel="stylesheet" href="https://projetos.surrealgroup.com.br/CommercialGroupCRM/ghl-calendar-surreal.css">
+   Avatar = o LOGO do proprio calendario (defina por calendario); este CSS deixa redondo.
+   ============================================================================== */
+:root{ --sg-ghl-loaded:1; }
+/* SURREAL GROUP · navy-glass · WIDGET DE AGENDAMENTO (Neo XL + ajustes do gabarito + mobile) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* ============ TEMA XL (desktop · Neo) ============ */
+.hl-app.appointment_widgets-xl--revamp{
+  --sg-bg:#0A1017; --sg-panel:#0E1826; --sg-panel2:#0C1420; --sg-border:#28394D; --sg-border2:#34495F;
+  --sg-text:#EEF2F8; --sg-body:#B7C2D6; --sg-muted:#8A98AC; --sg-faint:#63728A;
+  --sg-link:#8AC7FF; --sg-accent1:#8FC0FF; --sg-accent2:#4C90FF; --sg-on:#07121F;
+  --sg-soft:rgba(79,166,255,.14); --sg-focus:rgba(79,166,255,.22);
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; color:var(--sg-body) !important;
+  background:var(--sg-bg) !important;
+  background-image:radial-gradient(1000px 520px at 50% -8%, rgba(79,166,255,.16), transparent 70%),linear-gradient(170deg,#0A1017 0%,#0B1420 58%,#0A1017 100%) !important;
+  color-scheme:dark !important;
+}
+.hl-app.appointment_widgets-xl--revamp *{ font-family:inherit !important; }
+.appointment_widgets--revamp--inner{ background:rgba(14,24,38,.92) !important; border:1px solid var(--sg-border) !important; border-radius:20px !important; box-shadow:0 24px 60px -24px rgba(0,0,0,.65) !important; color:var(--sg-body) !important; overflow:hidden !important; }
+.appointment_widgets--revamp--service-info{ background:var(--sg-panel2) !important; border-right:1px solid var(--sg-border) !important; color:var(--sg-body) !important; position:relative !important; }
+.widgets--service-name{ font-family:"Fraunces",Georgia,serif !important; color:#fff !important; font-weight:600 !important; letter-spacing:-.01em !important; font-size:22px !important; line-height:1.2 !important; }
+.appointment_widgets--revamp--service-info .booking-info-value, .appointment_widgets--revamp--service-info *{ color:var(--sg-body) !important; }
+.appointment_widgets--revamp--service-info svg, .appointment_widgets--revamp--service-info i{ color:var(--sg-link) !important; fill:var(--sg-link) !important; }
+.appointment_widgets--revamp--steps{ background:transparent !important; color:var(--sg-body) !important; }
+.label-select-date{ font-family:"Fraunces",Georgia,serif !important; color:#fff !important; font-weight:600 !important; font-size:20px !important; letter-spacing:-.01em !important; }
+.appointment_widgets--revamp--booking .text-capitalize{ color:#fff !important; font-weight:600 !important; font-size:16px !important; }
+.vdpHeadCellContent{ font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.08em !important; text-transform:uppercase !important; color:var(--sg-muted) !important; }
+.arrowPrevious, .arrowNext{ color:var(--sg-link) !important; }
+.arrowPrevious:not(.disabled):hover, .arrowNext:not(.disabled):hover{ color:#BFE0FF !important; }
+.arrowPrevious.disabled, .arrowNext.disabled{ color:#334156 !important; }
+.vdpCell .vdpCellContent{ color:var(--sg-body) !important; border-radius:50% !important; transition:background-color .15s ease, color .15s ease, box-shadow .15s ease !important; }
+.vdpCell.selectable .vdpCellContent{ color:var(--sg-link) !important; }
+.vdpCell.selectable:hover .vdpCellContent{ background:var(--sg-soft) !important; color:#fff !important; }
+.vdpCell.today .vdpCellContent{ box-shadow:0 0 0 1px var(--sg-border2) inset !important; }
+.vdpCell.disabled .vdpCellContent{ color:#3B4A5E !important; }
+.vdpCell.selected .vdpCellContent{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; color:var(--sg-on) !important; font-weight:700 !important; box-shadow:0 8px 20px -8px rgba(79,166,255,.5) !important; }
+.widgets-time-slots{ gap:10px !important; }
+.widgets-time-slot{ background:var(--sg-panel) !important; border:1px solid var(--sg-border) !important; color:var(--sg-link) !important; border-radius:11px !important; font-weight:600 !important; overflow:hidden !important; transition:border-color .15s ease, background-color .15s ease, box-shadow .15s ease !important; }
+.widgets-time-slot > *, .widgets-time-slot span, .widgets-time-slot .btn, .widgets-time-slot button{ background:transparent !important; background-color:transparent !important; border:0 !important; color:var(--sg-link) !important; }
+.widgets-time-slot:hover{ border-color:var(--sg-accent2) !important; background:#122032 !important; box-shadow:0 0 0 3px var(--sg-focus) !important; }
+.widgets-time-slot.selected, .widgets-time-slot.active, .widgets-time-slot[aria-selected="true"]{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; border-color:transparent !important; }
+.widgets-time-slot.selected span, .widgets-time-slot.active span, .widgets-time-slot[aria-selected="true"] span{ color:var(--sg-on) !important; }
+.widgets-date-timezone-wrapper{ color:var(--sg-muted) !important; }
+.widgets-date-timezone-wrapper select, .appointment_widgets--revamp--steps select{ background:var(--sg-panel) !important; border:1px solid var(--sg-border) !important; color:var(--sg-body) !important; border-radius:10px !important; font-size:13px !important; }
+.appointment_widgets-xl--revamp input[type="text"], .appointment_widgets-xl--revamp input[type="email"], .appointment_widgets-xl--revamp input[type="tel"], .appointment_widgets-xl--revamp textarea{ background:var(--sg-panel) !important; border:1px solid var(--sg-border) !important; color:var(--sg-text) !important; border-radius:11px !important; font-size:15px !important; }
+.appointment_widgets-xl--revamp input::placeholder, .appointment_widgets-xl--revamp textarea::placeholder{ color:var(--sg-faint) !important; }
+.appointment_widgets-xl--revamp input:focus, .appointment_widgets-xl--revamp textarea:focus{ border-color:var(--sg-accent2) !important; box-shadow:0 0 0 3px var(--sg-focus) !important; outline:none !important; }
+.appointment_widgets-xl--revamp label{ font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.08em !important; text-transform:uppercase !important; color:var(--sg-muted) !important; }
+.appointment_widgets-xl--revamp .appointment_widgets--revamp--steps > button, .appointment_widgets-xl--revamp button[class*="confirm" i], .appointment_widgets-xl--revamp button[class*="agend" i], .appointment_widgets-xl--revamp button[class*="continue" i], .appointment_widgets-xl--revamp button[class*="book" i], .appointment_widgets-xl--revamp button.primary-btn, .appointment_widgets-xl--revamp button.button-vue, .appointment_widgets-xl--revamp button[type="submit"]{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; color:var(--sg-on) !important; border:0 !important; border-radius:12px !important; font-weight:700 !important; box-shadow:0 10px 26px -10px rgba(79,166,255,.45) !important; }
+::selection{ background:rgba(79,166,255,.25); }
+/* ESTADO DE CARREGAMENTO (trocar de mes): overlay era branco 70% -> navy; pontinhos em azul */
+.datepick-info{ background:rgba(10,16,23,0.72) !important; -webkit-backdrop-filter:blur(1px) !important; backdrop-filter:blur(1px) !important; }
+.ellipsis-loader svg *{ fill:#8AC7FF !important; }
+.slots-loading-overlay, .widgets-slot-block.disable-slots{ background:rgba(10,16,23,0.45) !important; }
+
+/* ============ EFEITOS SUTIS · entrada, pulso no selecionado, micro-interacoes ============ */
+@keyframes sgRise{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+@keyframes sgSelPulse{ 0%,100%{ box-shadow:0 0 0 3px rgba(79,166,255,.20); } 50%{ box-shadow:0 0 0 6px rgba(79,166,255,.08); } }
+.appointment_widgets--revamp--inner{ animation:sgRise .55s cubic-bezier(.22,.61,.36,1) both !important; }
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--service-info img{ transition:transform .35s ease, box-shadow .35s ease !important; }
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--service-info img:hover{ transform:scale(1.04) !important; }
+.vdpCell .vdpCellContent{ transition:background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease !important; }
+.vdpCell.selectable:hover .vdpCellContent{ transform:translateY(-1px) !important; }
+.widgets-time-slot{ transition:border-color .2s ease, background-color .2s ease, box-shadow .2s ease, transform .2s ease !important; }
+.widgets-time-slot:hover{ transform:translateY(-1px) !important; }
+.widgets-time-slot.actived, .widgets-time-slot.selected, .widgets-time-slot.active{ animation:sgSelPulse 2.6s ease-in-out infinite !important; }
+.show-more-description, .arrowPrevious, .arrowNext, .hl-app a{ transition:color .18s ease, background-color .18s ease !important; }
+@media (prefers-reduced-motion: reduce){
+  .appointment_widgets--revamp--inner,
+  .widgets-time-slot.actived, .widgets-time-slot.selected, .widgets-time-slot.active{ animation:none !important; }
+  .vdpCell .vdpCellContent, .widgets-time-slot, .appointment_widgets--revamp--service-info img{ transition:none !important; }
+}
+.hl-app.appointment_widgets-xl--revamp a{ color:var(--sg-link) !important; }
+.hl-app.appointment_widgets-xl--revamp a:hover{ color:#BFE0FF !important; }
+.vdpPeriodControl, .vdpPeriodControl *, .appointment_widgets--revamp--booking .text-capitalize{ -webkit-user-select:none !important; user-select:none !important; }
+.vdpPeriodControl button, .vdpPeriodControl .text-capitalize, .arrowPrevious, .arrowNext{ background:transparent !important; background-image:none !important; box-shadow:none !important; border:0 !important; }
+
+/* ============ AJUSTES DO GABARITO (desktop · Neo) ============ */
+/* painel da foto: fundo igual ao cartão, sem borda vertical nem diferença de fundo */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--service-info{
+  background:transparent !important; border:0 !important; border-right:0 !important;
+}
+
+/* AVATAR: mostra a FOTO REAL do calendario, ampliada e redonda */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--service-info img,
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--service-info img.appointment_widgets--revamp--neo-calendar-logo{
+  display:block !important; width:124px !important; height:124px !important;
+  border-radius:50% !important; object-fit:cover !important; margin:0 0 22px !important;
+  border:2px solid rgba(79,166,255,.28) !important; box-shadow:0 10px 26px -10px rgba(0,0,0,.6) !important;
+}
+
+/* TODOS OS DIAS VISÍVEIS (GHL usa -webkit-text-fill-color) */
+.hl-app.appointment_widgets-xl--revamp .vdpCell.disabled,
+.hl-app.appointment_widgets-xl--revamp .vdpCell.outOfRange{ opacity:1 !important; }
+.hl-app .calendarVdpComponent .vdpCell.disabled .vdpCellContent,
+.hl-app .calendarVdpComponent .vdpCell.outOfRange .vdpCellContent{
+  color:#5A6B82 !important; -webkit-text-fill-color:#5A6B82 !important;
+}
+.hl-app .calendarVdpComponent .vdpCell.selectable .vdpCellContent{ -webkit-text-fill-color:#8AC7FF !important; }
+.hl-app .calendarVdpComponent .vdpCell.selected .vdpCellContent{ -webkit-text-fill-color:#07121F !important; }
+.hl-app .calendarVdpComponent .vdpCell.disabled.today .vdpCellContent{
+  color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; box-shadow:0 0 0 1px #34495F inset !important;
+}
+/* "hoje": remove o ponto (bullet) que desbalanceia; numero centralizado no anel */
+.vdpCell.today .vdpCellContent::after{ content:none !important; display:none !important; }
+.vdpCell.today .vdpCellContent{ display:flex !important; align-items:center !important; justify-content:center !important; }
+
+/* DADOS DO PAINEL (1 h + data) VISÍVEIS + ÍCONES (outline/stroke, não fill) */
+.appointment_widgets--revamp--booking-info .booking-info-value,
+.appointment_widgets--revamp--booking-info .booking-info-value *{
+  color:#EEF2F8 !important; -webkit-text-fill-color:#EEF2F8 !important;
+}
+.appointment_widgets--revamp--booking-info svg{ color:#8AC7FF !important; opacity:1 !important; }
+.appointment_widgets--revamp--booking-info svg path,
+.appointment_widgets--revamp--booking-info svg circle,
+.appointment_widgets--revamp--booking-info svg line,
+.appointment_widgets--revamp--booking-info svg rect,
+.appointment_widgets--revamp--booking-info svg polyline{ stroke:#8AC7FF !important; }
+
+/* FUSO HORÁRIO · rótulo + pill navy-glass legível */
+.widgets-timezone-picker .timezone-label{
+  color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important;
+  font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important;
+  font-weight:600 !important; text-transform:uppercase !important; letter-spacing:.08em !important;
+}
+.widgets-timezone-picker .multiselect__tags{
+  background:#0E1826 !important; border:1px solid #28394D !important; border-radius:10px !important; min-height:40px !important;
+}
+.widgets-timezone-picker .multiselect__single,
+.widgets-timezone-picker .multiselect__single *{ color:#B7C2D6 !important; -webkit-text-fill-color:#B7C2D6 !important; }
+.widgets-timezone-picker .multiselect__content-wrapper{ background:#0E1826 !important; border:1px solid #28394D !important; }
+.widgets-timezone-picker .multiselect__option{ color:#B7C2D6 !important; -webkit-text-fill-color:#B7C2D6 !important; }
+.widgets-timezone-picker .multiselect__option--highlight,
+.widgets-timezone-picker .multiselect__option--selected{ background:#122032 !important; color:#fff !important; -webkit-text-fill-color:#fff !important; }
+.widgets-timezone-picker .multiselect__select::before{ border-color:#8AC7FF transparent transparent !important; }
+
+/* BORDAS PERFEITAS DOS HORÁRIOS (remove a borda interna azul que estragava as quinas) */
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section .widgets-time-slots .widgets-time-slot{
+  border:1px solid #28394D !important; border-radius:12px !important; overflow:hidden !important; background:#0E1826 !important;
+}
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section .widgets-time-slots .widgets-time-slot > span,
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section .widgets-time-slots .widgets-time-slot > *,
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section .widgets-time-slots .widgets-time-slot .btn{
+  border:0 !important; border-width:0 !important; border-color:transparent !important;
+  box-shadow:none !important; outline:0 !important; background:transparent !important;
+}
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section .widgets-time-slots .widgets-time-slot:hover{
+  border-color:#4C90FF !important; background:#122032 !important; box-shadow:0 0 0 3px rgba(79,166,255,.22) !important;
+}
+/* SLOT SELECIONADO (split "horario | Selecionar"): unificado, borda accent, divisor sutil, CTA em azul claro */
+.widgets-time-slot.actived, .widgets-time-slot.selected, .widgets-time-slot.active{
+  background:#122032 !important; border:1px solid #4C90FF !important; border-radius:12px !important;
+  overflow:hidden !important; box-shadow:0 0 0 3px rgba(79,166,255,.18) !important;
+}
+.widgets-time-slot.actived > span, .widgets-time-slot.selected > span, .widgets-time-slot.active > span{
+  background:transparent !important; color:#EEF2F8 !important; -webkit-text-fill-color:#EEF2F8 !important;
+  font-weight:700 !important; border-right:1px solid rgba(138,199,255,.22) !important;
+}
+.widgets-time-slot .btn.selected-slot, .widgets-time-slot.actived .btn,
+.widgets-time-slot.selected .btn, .widgets-time-slot.active .btn,
+.widgets-time-slot .btn.selected-slot *{
+  color:#BFE0FF !important; -webkit-text-fill-color:#BFE0FF !important; font-weight:700 !important; border:0 !important;
+}
+
+/* ============ GENERICO + MOBILE (sm/booking) ============ */
+/* --- fundo navy + glow (só na página do widget) --- */
+html:has(.appointment_widgets--revamp--booking),
+html:has(.appointment_widgets--revamp--booking) body,
+.appointment_widgets-sm--revamp,
+.appointment_widgets--revamp--inner,
+.appointment_widgets--revamp--booking{
+  background:#0A1017 !important;
+  background-image:
+    radial-gradient(1000px 520px at 50% -8%, rgba(79,166,255,.16), transparent 70%),
+    linear-gradient(170deg,#0A1017 0%,#0B1420 58%,#0A1017 100%) !important;
+}
+.appointment_widgets--revamp--booking, .appointment_widgets--revamp--booking *{
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif;
+}
+.appointment_widgets--revamp--booking{ color:#B7C2D6 !important; }
+/* DESCRICAO do calendario: GHL renderiza em preto -> deixar legivel no navy */
+.widgets--service-description,
+.widgets--service-description *{
+  color:#B7C2D6 !important; -webkit-text-fill-color:#B7C2D6 !important;
+}
+.widgets--service-description{
+  font-size:14px !important; line-height:1.6 !important; margin-top:16px !important;
+}
+.widgets--service-description p{ margin:0 0 9px !important; }
+/* DESCRICAO no MOBILE (dentro do booking-info): legivel no navy inclusive Safari/WebKit */
+.appointment_widgets--revamp--booking-info .booking-info--description,
+.appointment_widgets--revamp--booking-info .calendar-description,
+.appointment_widgets--revamp--booking-info .description,
+.appointment_widgets--revamp--booking-info .description *{
+  color:#C6D2E6 !important; -webkit-text-fill-color:#C6D2E6 !important;
+}
+.show-more-description{ color:#8AC7FF !important; -webkit-text-fill-color:#8AC7FF !important; font-weight:600 !important; }
+/* TIPOGRAFIA · hierarquia clara (titulo hero, abertura em destaque, corpo confortavel) */
+.hl-app.appointment_widgets-xl--revamp .widgets--service-name{ font-size:26px !important; line-height:1.16 !important; margin-bottom:4px !important; }
+.widgets--service-description{ font-size:15px !important; line-height:1.62 !important; }
+.widgets--service-description p:first-child{
+  font-size:16px !important; line-height:1.55 !important;
+  color:#DCE6F5 !important; -webkit-text-fill-color:#DCE6F5 !important;
+}
+
+/* --- título do evento (Fraunces) --- */
+.appointment_widgets--revamp--booking .widgets--service-name{
+  font-family:"Fraunces",Georgia,serif !important; color:#fff !important;
+  font-weight:600 !important; letter-spacing:-.015em !important;
+}
+/* títulos/etapas ("Insira os detalhes", "Escolha o horário") */
+.appointment_widgets--revamp--booking h1,.appointment_widgets--revamp--booking h2,
+.appointment_widgets--revamp--booking h3,.appointment_widgets--revamp--booking h4,
+.appointment_widgets--revamp--booking h5,
+.appointment_widgets--revamp--booking [class*="title" i],
+.appointment_widgets--revamp--booking [class*="heading" i]{ color:#EEF2F8 !important; }
+
+/* --- cartão de info (duração / data / fuso) --- */
+.appointment-widgets-service-booking-info{ background:transparent !important; border:0 !important; box-shadow:none !important; }
+.appointment_widgets--revamp--booking-info{
+  background:rgba(14,24,38,.92) !important; border:1px solid #28394D !important;
+  border-radius:14px !important; box-shadow:none !important;
+  padding:6px 16px !important; margin-top:22px !important;
+}
+/* linhas (duracao / data): ritmo uniforme + divisor sutil, icone alinhado */
+.appointment_widgets--revamp--booking-info .booking-info--duration,
+.appointment_widgets--revamp--booking-info .booking-info--datetime,
+.appointment_widgets--revamp--booking-info > div{
+  display:flex !important; align-items:center !important; gap:14px !important;
+  padding:15px 0 !important; margin:0 !important;
+}
+.appointment_widgets--revamp--booking-info .booking-info--datetime,
+.appointment_widgets--revamp--booking-info > div + div{
+  border-top:1px solid rgba(138,199,255,.12) !important;
+}
+.appointment_widgets--revamp--booking-info svg{
+  flex:0 0 auto !important; width:20px !important; height:20px !important;
+}
+.appointment_widgets--revamp--booking-info *{ color:#B7C2D6 !important; }
+.appointment_widgets--revamp--booking .booking-info-value{ color:#EEF2F8 !important; }
+
+/* --- calendário (VueDatePicker) --- */
+.vdpTable,.vdpOuterWrap,.vdpInnerWrap,.vdpPeriodControls{ background:transparent !important; }
+.vdpHeadCellContent{
+  font-family:"JetBrains Mono",ui-monospace,monospace !important;
+  font-size:10px !important; letter-spacing:.1em !important; text-transform:uppercase !important;
+  color:#8A98AC !important;
+}
+.vdpCell .vdpCellContent{ color:#B7C2D6 !important; border-radius:50% !important; transition:background .16s,color .16s; }
+.vdpCell.disabled .vdpCellContent,.vdpCell.outOfRange .vdpCellContent{ color:#3C4A5E !important; background:transparent !important; }
+.vdpCell.selectable .vdpCellContent{ background:rgba(79,166,255,.14) !important; color:#8AC7FF !important; }
+.vdpCell.selectable:hover .vdpCellContent{ background:rgba(79,166,255,.26) !important; color:#C6E3FF !important; }
+.vdpCell.selectable.selected .vdpCellContent{
+  background:linear-gradient(180deg,#8FC0FF,#4C90FF) !important; color:#07121F !important;
+  font-weight:700 !important; box-shadow:0 6px 16px rgba(79,166,255,.3) !important;
+}
+
+/* mês / ano · o <select> é um overlay invisível; o texto fica no botão por baixo */
+.vdpPeriodControl button,.vdpPeriodControl button.text-capitalize,.vdpPeriodControls button{
+  font-family:"Fraunces",Georgia,serif !important; color:#EEF2F8 !important;
+  font-weight:600 !important; background:transparent !important;
+}
+.vdpPeriodControl select,select.vdpPeriodControlDisable,.vdpPeriodControls select{
+  background:transparent !important; color:transparent !important; border:0 !important;
+  box-shadow:none !important; -webkit-appearance:none; appearance:none;
+}
+
+/* setas de navegação */
+.arrowPrevious,.arrowNext{ background:rgba(79,166,255,.14) !important; border-radius:50% !important; color:#8AC7FF !important; }
+.arrowPrevious.disabled,.arrowNext.disabled{ opacity:.5 !important; background:transparent !important; }
+.arrowPrevious:before,.arrowNext:before{ border-color:#8AC7FF !important; color:#8AC7FF !important; }
+
+/* --- etapa de horários --- */
+.widgets-slot-block,.widgets-slot-times-section,.widgets-time-slots{ background:transparent !important; }
+.appointment_widgets--revamp--selected-slot-info,.appointment_widgets--revamp--selected-slot-info *{ color:#EEF2F8 !important; }
+.widgets-time-slot .btn{ background:#0E1826 !important; border:1px solid #28394D !important; color:#8AC7FF !important; border-radius:12px !important; }
+.widgets-time-slot .btn:hover{ background:#122032 !important; border-color:#4FA6FF !important; color:#fff !important; }
+
+/* botão primário (Selecionar / Agendar) */
+.btn-schedule,.hl_button.--primary,.button-element{
+  background:linear-gradient(180deg,#8FC0FF,#4C90FF) !important; color:#07121F !important;
+  border:0 !important; border-radius:12px !important; font-weight:700 !important;
+  box-shadow:0 10px 26px rgba(79,166,255,.28) !important;
+}
+
+/* botão voltar */
+.appointment_widgets--revamp--back-button{ background:rgba(79,166,255,.14) !important; border-radius:50% !important; color:#8AC7FF !important; }
+
+/* --- etapa de dados (formulário) --- */
+.appointment_widgets--revamp--booking input,
+.appointment_widgets--revamp--booking textarea,
+.appointment_widgets--revamp--booking select,
+.appointment_widgets--revamp--booking .hl-text-input{
+  background:#0E1826 !important; border:1px solid #28394D !important; color:#EEF2F8 !important; border-radius:11px !important;
+}
+.appointment_widgets--revamp--booking input::placeholder,
+.appointment_widgets--revamp--booking textarea::placeholder{ color:#63728A !important; }
+.appointment_widgets--revamp--booking input:focus,
+.appointment_widgets--revamp--booking textarea:focus,
+.appointment_widgets--revamp--booking select:focus{
+  border-color:#4FA6FF !important; box-shadow:0 0 0 3px rgba(79,166,255,.14) !important; outline:none !important;
+}
+.appointment_widgets--revamp--booking label{
+  font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:10px !important;
+  text-transform:uppercase !important; letter-spacing:.1em !important; color:#8A98AC !important; font-weight:600 !important;
+}
+
+/* --- remover fundos brancos herdados --- */
+.appointment_widgets--revamp--booking .bg-white,
+.appointment_widgets--revamp--booking [class*="bg-white"]{ background:transparent !important; }
