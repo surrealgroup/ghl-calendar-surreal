@@ -53,9 +53,9 @@
 .appointment_widgets-xl--revamp .appointment_widgets--revamp--steps > button, .appointment_widgets-xl--revamp button[class*="confirm" i], .appointment_widgets-xl--revamp button[class*="agend" i], .appointment_widgets-xl--revamp button[class*="continue" i], .appointment_widgets-xl--revamp button[class*="book" i], .appointment_widgets-xl--revamp button.primary-btn, .appointment_widgets-xl--revamp button.button-vue, .appointment_widgets-xl--revamp button[type="submit"]{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; color:var(--sg-on) !important; border:0 !important; border-radius:12px !important; font-weight:700 !important; box-shadow:0 10px 26px -10px rgba(79,166,255,.45) !important; }
 ::selection{ background:rgba(79,166,255,.25); }
 /* ESTADO DE CARREGAMENTO (trocar de mes): overlay era branco 70% -> navy; pontinhos em azul */
-.datepick-info{ background:rgba(10,16,23,0.72) !important; -webkit-backdrop-filter:blur(1px) !important; backdrop-filter:blur(1px) !important; }
+.datepick-info{ background:#0A1017 !important; -webkit-backdrop-filter:blur(1px) !important; backdrop-filter:blur(1px) !important; }
 .ellipsis-loader svg *{ fill:#8AC7FF !important; }
-.slots-loading-overlay, .widgets-slot-block.disable-slots{ background:rgba(10,16,23,0.45) !important; }
+.slots-loading-overlay, .widgets-slot-block.disable-slots, .widgets-slot-block.slots-loading-overlay{ background:#0A1017 !important; }
 
 /* ============ EFEITOS SUTIS · entrada, pulso no selecionado, micro-interacoes ============ */
 @keyframes sgRise{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
