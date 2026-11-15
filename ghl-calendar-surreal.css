@@ -38,7 +38,7 @@
 .vdpCell.today .vdpCellContent{ box-shadow:0 0 0 1px var(--sg-border2) inset !important; }
 .vdpCell.disabled .vdpCellContent{ color:#3B4A5E !important; }
 .vdpCell.selected .vdpCellContent{ background:linear-gradient(180deg,var(--sg-accent1),var(--sg-accent2)) !important; color:var(--sg-on) !important; font-weight:700 !important; box-shadow:0 8px 20px -8px rgba(79,166,255,.5) !important; }
-.widgets-time-slots{ gap:10px !important; padding:0 31px 8px 0 !important; }
+.widgets-time-slots{ gap:10px !important; padding:0 20px 8px 0 !important; }
 
 /* ============ SCROLLBAR PADRONIZADO (navy-glass, fino e flutuante) ============ */
 /* polegar azul visível, SÓ quando há overflow (conteúdo que obriga rolar); sem trilho/barra vazia */
