@@ -23,6 +23,10 @@
   background-repeat:no-repeat !important;
   background-attachment:fixed !important;
   color-scheme:dark !important;
+  /* escala 90%: a tela já abre na diagramação aprovada (o que o José via só ao
+     diminuir o zoom do navegador para 90%), sem precisar ajustar o zoom na mão.
+     Só no layout desktop (-xl--revamp); o mobile (-sm--revamp) não é afetado. */
+  zoom:0.9 !important;
 }
 .hl-app.appointment_widgets-xl--revamp *{ font-family:inherit !important; }
 .appointment_widgets--revamp--inner{ background:rgba(14,24,38,.92) !important; border:1px solid var(--sg-border) !important; border-radius:20px !important; box-shadow:0 24px 60px -24px rgba(0,0,0,.65) !important; color:var(--sg-body) !important; overflow:hidden !important; max-width:1060px !important; margin-left:auto !important; margin-right:auto !important; }
