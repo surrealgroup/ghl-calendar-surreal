@@ -705,3 +705,103 @@ html:has(.appointment_widgets--revamp--booking) body,
    (a 26px passava de 280px e jogava "Comercial" sozinho; text-wrap:balance piorou, entao nao e usado).
    Vale em todas as telas do fluxo (mesma hierarquia). Mobile ja era 24px e quebra em 2 linhas. */
 .hl-app.appointment_widgets-xl--revamp .widgets--service-name{ font-size:24px !important; line-height:1.18 !important; }
+
+/* ==============================================================================
+   BOOKING (data/hora) · passe premium
+   ============================================================================== */
+/* slots: o GHL desenha borda azul nas laterais do <span> do horario (seletor de 7 niveis) */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps .widgets-slot-block .widgets-time-slots .widgets-time-slot > span{
+  border:0 !important; border-width:0 !important; border-color:transparent !important; box-shadow:none !important; background:transparent !important;
+}
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps .widgets-slot-block .widgets-time-slots .widgets-time-slot:not(.actived) > span{ width:100% !important; justify-content:center !important; text-align:center !important; }
+/* rotulo da coluna de horarios (mono) alinhado a linha dos dias da semana */
+.hl-app.appointment_widgets-xl--revamp .widgets-slot-times-section::before{
+  content:"Horários disponíveis"; display:block; margin:0 0 12px;
+  font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#8A98AC;
+}
+/* coluna esquerda: descricao longa rola dentro do cartao com esmaecimento no rodape (em vez de cortar seco) */
+.hl-app.appointment_widgets-xl--revamp:not(:has(.hl_calendar_widget-cancellation-inner-padding)) .appointment_widgets--revamp--info-container{
+  max-height:700px !important; overflow-y:auto !important; overflow-x:hidden !important; scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 48px),transparent); mask-image:linear-gradient(to bottom,#000 calc(100% - 48px),transparent);
+  padding-bottom:56px !important;
+}
+.hl-app.appointment_widgets-xl--revamp:not(:has(.hl_calendar_widget-cancellation-inner-padding)) .appointment_widgets--revamp--info-container::-webkit-scrollbar{ display:none; }
+
+/* ==============================================================================
+   FORMULARIO (detalhes) · cartao em altura do conteudo, rodape sob os campos, sem vao
+   Mesma tecnica do cancelamento: o GHL pina o rodape (absolute) e forca 700px de altura.
+   ============================================================================== */
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--inner,
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--booking,
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--container{ max-height:none !important; height:auto !important; min-height:0 !important; }
+/* no passo do formulario o rodape e IRMAO do container (filho do .booking): o .booking vira o grid e o container some (display:contents) */
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--booking{
+  display:grid !important; grid-template-columns:340px minmax(0,1fr) !important; grid-template-rows:auto 1fr !important; align-items:start !important; width:100% !important;
+}
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--container{ display:contents !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--info-container{ grid-column:1 !important; grid-row:1 / span 2 !important; align-self:stretch !important; padding-bottom:32px !important; max-height:none !important; overflow:visible !important; width:auto !important; max-width:none !important; min-width:0 !important; flex:none !important; display:block !important; -webkit-mask-image:none !important; mask-image:none !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--steps{ grid-column:2 !important; grid-row:1 !important; width:100% !important; max-width:none !important; flex:none !important; justify-self:stretch !important; box-sizing:border-box !important; padding-bottom:0 !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .widgets-action-buttons{
+  grid-column:2 !important; grid-row:2 !important; position:static !important; inset:auto !important; justify-self:stretch !important; align-self:start !important;
+  display:flex !important; flex-wrap:wrap !important; align-items:center !important; gap:16px !important; margin:0 !important; padding:24px 32px 32px 28px !important; width:auto !important;
+}
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .widgets-action-buttons::before{
+  content:"O convite com o link do Google Meet chega no seu e‑mail logo após a confirmação."; flex:1 1 280px; max-width:46ch;
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:500; line-height:1.55; color:#8A98AC; -webkit-text-fill-color:#8A98AC;
+}
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .widgets-action-buttons button{ min-height:48px !important; padding:0 28px !important; margin-left:auto; }
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .terms-and-conditions{ margin-top:16px !important; }
+
+/* embed do formulario do GHL: remove as margens/paddings finais que criavam vao antes do rodape */
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .ghl-form-wrap,
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .form-builder--wrap{ margin-bottom:0 !important; }
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--booking #_builder-form .fields-container{ padding-bottom:0 !important; }
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .form-side{ min-height:0 !important; }
+.hl-app:has(.appointment_widgets--revamp--steps.step-form) .col-12{ margin-bottom:0 !important; }
+
+/* formulario: nota de acolhimento sob o card de info (fecha a coluna da esquerda, sem mexer no DOM) */
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--info-container::after{
+  content:"Você pode remarcar ou cancelar a qualquer momento pelo link que chega no convite.";
+  display:block; margin-top:24px; padding:4px 0 4px 16px; border-left:2px solid rgba(79,166,255,.45);
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:500; line-height:1.55; color:#8A98AC; -webkit-text-fill-color:#8A98AC;
+}
+
+/* ==============================================================================
+   CONFIRMACAO · cartao fechado, coluna unica centrada (a coluna de info do GHL some nesta etapa)
+   ============================================================================== */
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--inner,
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--booking,
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--container{ min-height:0 !important; height:auto !important; max-height:none !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--info-container:not(.show){ display:none !important; }
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--steps{ width:100% !important; max-width:none !important; max-height:none !important; height:auto !important; overflow:visible !important; padding:48px 32px 48px !important; box-sizing:border-box !important; }
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--confirmation .confirmation-message{ font-size:28px !important; margin-bottom:12px !important; }
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--confirmation > div{ max-width:560px !important; }
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--confirmation .appointment_widgets--revamp--booking-info{ margin:0 0 24px !important; padding:4px 24px !important; }
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--confirmation .widgets-confirmation-icon{ margin:0 0 24px !important; }
+/* uma linha de proximo passo, sob os botoes de calendario */
+.hl-app:has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--confirmation .hl_events-buttons::after{
+  content:"Precisa mudar? Use o link de remarcar que vai junto do convite."; display:block; margin-top:24px; text-align:center;
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:500; line-height:1.55; color:#8A98AC; -webkit-text-fill-color:#8A98AC;
+}
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp):has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps.full-width,
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp):has(.appointment_widgets--revamp--confirmation) .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps{ max-height:none !important; height:auto !important; min-height:0 !important; }
+
+/* mobile · formulario: o rodape do GHL e fixo/sticky e cobre os termos; passa a fluir no fim do formulario */
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .widgets-action-buttons{ position:static !important; inset:auto !important; transform:none !important; background:transparent !important; box-shadow:none !important; }
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--booking #_builder-form .fields-container{ padding-bottom:0 !important; }
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .ghl-form-wrap,
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .form-builder--wrap{ margin-bottom:0 !important; }
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--booking{ display:flex !important; flex-direction:column !important; }
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .appointment_widgets--revamp--container{ order:1 !important; }
+.hl-app.appointment_widgets-sm--revamp:has(.appointment_widgets--revamp--steps.step-form) .widgets-action-buttons{ order:2 !important; margin:0 20px 32px !important; width:calc(100% - 40px) !important; }
+
+/* CONFIRMACAO · foto do anfitriao no circulo do topo (no lugar do icone generico).
+   A imagem e hospedada junto do CSS (mesmo repositorio/Pages): ghl-host.jpg (copia do avatar do calendario). */
+.hl-app .appointment_widgets--revamp--confirmation .widgets-confirmation-icon > div{
+  position:relative; width:96px; height:96px; margin:0 auto; border-radius:50%; box-sizing:border-box;
+  background:#0E1826 url("https://surrealgroup.github.io/ghl-calendar-surreal/ghl-host.jpg") center 18%/cover no-repeat;
+  border:2px solid rgba(79,166,255,.42);
+  box-shadow:0 0 0 6px rgba(79,166,255,.09), 0 18px 38px -14px rgba(79,166,255,.55);
+}
+.hl-app .appointment_widgets--revamp--confirmation .widgets-confirmation-icon svg{ display:none !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .widgets-confirmation-icon > div{ width:88px; height:88px; }
