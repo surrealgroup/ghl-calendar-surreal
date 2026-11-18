@@ -188,8 +188,7 @@ html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner, .hl-app ::-webki
 /* --- fundo navy + glow (só na página do widget) --- */
 html:has(.appointment_widgets--revamp--booking),
 html:has(.appointment_widgets--revamp--booking) body,
-.appointment_widgets-sm--revamp,
-.appointment_widgets--revamp--booking{
+.appointment_widgets-sm--revamp{
   background:#0A1017 !important;
   /* fundo uniforme + glow no topo, sem a banda do linear-gradient (idem desktop) */
   background-image:radial-gradient(1200px 620px at 50% -10%, rgba(79,166,255,.18), transparent 72%) !important;
@@ -198,6 +197,15 @@ html:has(.appointment_widgets--revamp--booking) body,
 }
 .appointment_widgets--revamp--booking, .appointment_widgets--revamp--booking *{
   font-family:"Manrope","Helvetica Neue",Arial,sans-serif;
+}
+/* SEAM / FAIXA DUPLA (corrigido): o fundo navy + glow vive SÓ em html/body e na raiz .hl-app.
+   Todo .appointment_widgets--revamp--booking (inclusive o aninhado da tela de CONFIRMACAO,
+   que o GHL renderiza como .booking.confirmation dentro do cartao) fica TRANSPARENTE, para nao
+   pintar um 2o painel opaco com glow proprio por cima do cartao de vidro. */
+.appointment_widgets--revamp--booking,
+.appointment_widgets--revamp--booking .appointment_widgets--revamp--booking,
+.appointment_widgets--revamp--confirmation{
+  background:transparent !important; background-image:none !important; box-shadow:none !important; border:0 !important;
 }
 .appointment_widgets--revamp--booking{ color:#B7C2D6 !important; }
 /* DESCRICAO do calendario: GHL renderiza em preto -> deixar legivel no navy */
@@ -330,3 +338,78 @@ html:has(.appointment_widgets--revamp--booking) body,
 /* --- remover fundos brancos herdados --- */
 .appointment_widgets--revamp--booking .bg-white,
 .appointment_widgets--revamp--booking [class*="bg-white"]{ background:transparent !important; }
+
+/* ==============================================================================
+   FLUXO COMPLETO · CARTAO UNICO + CONFIRMACAO + CANCELAMENTO + REMARCACAO
+   ============================================================================== */
+/* cartao UNICO: um unico fundo de vidro + um unico glow suave no canto superior esquerdo */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--inner{
+  background-color:rgba(14,24,38,.94) !important;
+  background-image:radial-gradient(900px 420px at 0% 0%, rgba(79,166,255,.09), transparent 70%) !important;
+}
+/* emenda vertical: nenhuma divisoria entre a coluna de info e a coluna de passos, em nenhum estado */
+.appointment_widgets--revamp--info-container,
+.appointment_widgets--revamp--steps,
+.appointment_widgets--revamp--container,
+.appointment_widgets--revamp--info{
+  border:0 !important; border-left:0 !important; border-right:0 !important; box-shadow:none !important;
+  background:transparent !important; background-image:none !important;
+}
+
+/* CONFIRMACAO ("Sua conferencia foi agendada") */
+.hl-app .appointment_widgets--revamp--confirmation .confirmation-message,
+.hl-app .appointment_widgets--revamp--confirmation h5{
+  font-family:"Fraunces",Georgia,serif !important; color:#fff !important; -webkit-text-fill-color:#fff !important;
+  font-weight:600 !important; letter-spacing:-.01em !important;
+}
+.appointment_widgets--revamp--confirmation .confirmation-invite-text,
+.appointment_widgets--revamp--confirmation .confirmation-invite-text *,
+.appointment_widgets--revamp--confirmation .form-message-html,
+.appointment_widgets--revamp--confirmation .form-message-html *{
+  color:#B7C2D6 !important; -webkit-text-fill-color:#B7C2D6 !important;
+}
+.appointment_widgets--revamp--confirmation .pointer{ color:#8AC7FF !important; -webkit-text-fill-color:#8AC7FF !important; font-weight:600 !important; }
+.appointment_widgets--revamp--confirmation .widgets-confirmation-icon circle{ fill:#4C90FF !important; fill-opacity:.12 !important; }
+.appointment_widgets--revamp--confirmation .widgets-confirmation-icon .confirmation-image path{ stroke:#8AC7FF !important; fill:none !important; }
+.appointment_widgets--revamp--confirmation .add-calendar-options-container{ display:flex !important; flex-wrap:wrap !important; gap:10px !important; }
+.appointment_widgets--revamp--confirmation .add-calendar-options-container > div,
+.appointment_widgets--revamp--confirmation .hl_events-buttons{
+  background:transparent !important; background-image:none !important; border:0 !important; box-shadow:none !important; padding:0 !important;
+}
+.appointment_widgets--revamp--confirmation .add-calendar-button{
+  display:inline-flex !important; align-items:center !important; gap:8px !important;
+  background:#0E1826 !important; border:1px solid #28394D !important; border-radius:11px !important;
+  color:#8AC7FF !important; -webkit-text-fill-color:#8AC7FF !important; padding:9px 14px !important;
+  font-weight:600 !important; font-size:13px !important; text-decoration:none !important;
+  transition:border-color .15s ease, background-color .15s ease !important;
+}
+.appointment_widgets--revamp--confirmation .add-calendar-button:hover{ background:#122032 !important; border-color:#4C90FF !important; }
+
+/* CANCELAMENTO (titulo vinha #101828 sobre navy) + estado "reuniao cancelada" */
+.hl-app .cancel-meeting-text,
+.hl-app .hl_calendar_widget-cancellation-inner-padding h5,
+.hl-app .hl_calendar_widget-cancellation-inner-padding h6{
+  font-family:"Fraunces",Georgia,serif !important; color:#fff !important; -webkit-text-fill-color:#fff !important;
+  font-weight:600 !important; font-size:20px !important; letter-spacing:-.01em !important; margin-bottom:14px !important;
+}
+.hl_calendar_widget-cancellation-inner-padding label{ color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; }
+.hl_cancellation_textarea{
+  background:#0E1826 !important; border:1px solid #28394D !important; border-radius:11px !important;
+  color:#EEF2F8 !important; -webkit-text-fill-color:#EEF2F8 !important;
+}
+.hl_cancellation_textarea:focus{ border-color:#4C90FF !important; box-shadow:0 0 0 3px rgba(79,166,255,.22) !important; outline:none !important; }
+.hl_cancellation_textarea::placeholder{ color:#63728A !important; -webkit-text-fill-color:#63728A !important; }
+/* botao de acao do rodape (Cancelar reuniao / Remarcar / Agendar): gradiente azul, texto escuro legivel */
+.widgets-action-buttons .hl_button,
+.widgets-action-buttons button{
+  background:linear-gradient(180deg,#8FC0FF,#4C90FF) !important; color:#07121F !important; -webkit-text-fill-color:#07121F !important;
+  border:0 !important; border-radius:12px !important; font-weight:700 !important;
+}
+.widgets-action-buttons button:disabled{ opacity:.55 !important; }
+
+/* SLOT SELECIONADO · remove a metade escura do "horario" (span com rgba(16,24,40,.6) do GHL): vidro unico */
+.hl-app .widgets-slot-times-section .widgets-time-slots .widgets-time-slot.actived > span,
+.hl-app .widgets-slot-times-section .widgets-time-slots .widgets-time-slot.selected > span,
+.hl-app .widgets-slot-times-section .widgets-time-slots .widgets-time-slot.active > span{
+  background:transparent !important; background-color:transparent !important;
+}
