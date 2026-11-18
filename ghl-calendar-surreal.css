@@ -576,3 +576,132 @@ html:has(.appointment_widgets--revamp--booking) body,
 .hl-app.appointment_widgets-sm--revamp .hl_calendar_widget-cancellation-inner-padding label{ display:block !important; margin:0 0 8px !important; line-height:16px !important; }
 .hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .add-calendar-options-container > div{ flex:1 1 100% !important; width:100% !important; }
 .hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .add-calendar-button{ width:100% !important; }
+
+/* ==============================================================================
+   CANCELAMENTO · composicao redesenhada
+   Esquerda (info) enxuta e a direita em 3 niveis: 1) REMARCAR (CTA primario, destaque maior),
+   2) divisor, 3) cancelar (secundario, vermelho de estado). Escala 4/8/12/16/24/32, raio 12/16.
+   O botao "Remarcar" e criado por ghl-cancel.js (.sg-resched); aqui so o visual.
+   ============================================================================== */
+/* coluna da esquerda: sem a descricao longa (pesava), card de info compacto */
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .widgets--service-description,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .booking-info--description{ display:none !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--info-container{ flex:0 0 340px !important; width:340px !important; max-width:340px !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking-info{ margin-top:20px !important; padding:4px 16px !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking-info .booking-info-value{ color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; font-weight:600 !important; }
+/* painel da direita: coluna com respiro 24 entre blocos */
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_calendar_widget-cancellation-inner-padding{ display:flex !important; flex-direction:column !important; gap:24px !important; padding:0 !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-wrapper,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-form,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-step2,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_form-group{ margin:0 !important; padding:0 !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-wrapper,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-form,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_widget-step2,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_form-group,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_form-name{ width:100% !important; max-width:none !important; box-sizing:border-box !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_cancellation_textarea{ width:100% !important; }
+
+/* CTA REMARCAR */
+.sg-resched{
+  display:flex; gap:16px; align-items:flex-start; box-sizing:border-box; width:100%;
+  padding:24px; border-radius:16px; border:1px solid rgba(79,166,255,.32);
+  background:linear-gradient(160deg,rgba(79,166,255,.14),rgba(79,166,255,.04) 60%), rgba(14,24,38,.9);
+  box-shadow:0 18px 40px -26px rgba(79,166,255,.55);
+}
+.sg-resched__icon{ flex:0 0 auto; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#8AC7FF; background:rgba(79,166,255,.14); border:1px solid rgba(79,166,255,.28); }
+.sg-resched__body{ min-width:0; flex:1 1 auto; }
+.hl-app .sg-resched__title{ margin:0 0 8px !important; font-family:"Fraunces",Georgia,serif !important; font-size:22px !important; line-height:1.25 !important; font-weight:600 !important; letter-spacing:-.01em !important; color:#fff !important; -webkit-text-fill-color:#fff !important; }
+.hl-app .sg-resched__text{ margin:0 0 16px !important; font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:14px !important; line-height:1.6 !important; color:#B7C2D6 !important; -webkit-text-fill-color:#B7C2D6 !important; }
+.hl-app a.sg-resched__btn{
+  display:inline-flex !important; align-items:center; justify-content:center; gap:8px; box-sizing:border-box; min-height:48px; padding:0 24px;
+  border-radius:12px; text-decoration:none !important; cursor:pointer;
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:15px; font-weight:700; letter-spacing:.01em;
+  background:linear-gradient(180deg,#8FC0FF,#4C90FF) !important; color:#07121F !important; -webkit-text-fill-color:#07121F !important;
+  box-shadow:0 10px 26px rgba(79,166,255,.28); transition:transform .15s ease, box-shadow .15s ease;
+}
+.hl-app a.sg-resched__btn:hover{ transform:translateY(-1px); box-shadow:0 14px 30px rgba(79,166,255,.38); color:#07121F !important; }
+.hl-app a.sg-resched__btn:focus-visible{ outline:0; box-shadow:0 0 0 3px rgba(79,166,255,.35); }
+.sg-resched--after{ margin:0; }
+
+/* bloco de cancelamento: divisor + titulo secundario */
+.hl-app:has(.sg-resched--before) .hl_form-group{ border-top:1px solid #28394D !important; padding-top:24px !important; }
+.hl-app:has(.sg-resched--before) .cancel-meeting-text{ font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:16px !important; font-weight:700 !important; letter-spacing:0 !important; margin:0 0 4px !important; }
+.hl-app:has(.sg-resched--before) .cancel-meeting-text + label{ margin-top:12px !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .hl_cancellation_textarea{ min-height:112px !important; }
+
+/* botao CANCELAR: secundario (contorno vermelho de estado), nunca competir com Remarcar */
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .widgets-action-buttons button{
+  background:transparent !important; background-image:none !important; box-shadow:none !important;
+  border:1px solid rgba(255,107,107,.5) !important; color:#FFB4B4 !important; -webkit-text-fill-color:#FFB4B4 !important;
+}
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .widgets-action-buttons button:not(:disabled):hover{ background:rgba(255,107,107,.1) !important; border-color:#FF6B6B !important; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .widgets-action-buttons button:disabled{ opacity:.45 !important; }
+
+/* mobile */
+.hl-app.appointment_widgets-sm--revamp .sg-resched{ flex-direction:column; padding:20px; gap:12px; }
+.hl-app.appointment_widgets-sm--revamp .sg-resched__icon{ width:40px; height:40px; }
+.hl-app.appointment_widgets-sm--revamp a.sg-resched__btn{ width:100%; }
+.hl-app.appointment_widgets-sm--revamp .sg-resched__title{ font-size:20px !important; }
+.hl-app a.sg-resched__btn svg{ stroke:#07121F; flex:0 0 auto; }
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking-info .booking-info-value,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking-info .booking-info-value *{ color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; }
+
+/* ==============================================================================
+   CANCELAMENTO · fechamento do cartao (sem vao) + acabamento premium
+   Causas do vao no GHL: min-height 700 no cartao e rodape absoluto (position:absolute) no canto.
+   Solucao so em CSS: o container vira grid [info 340 | passos], o rodape entra na linha 2 da
+   coluna da direita (logo abaixo do textarea) e o cartao passa a ter altura do conteudo.
+   Mesmas medidas das outras telas: padding 32, colunas 340/fluida, gaps 24, raio 12/16.
+   ============================================================================== */
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--inner,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking{ min-height:0 !important; height:auto !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--container{
+  display:grid !important; grid-template-columns:340px minmax(0,1fr) !important; grid-template-rows:auto 1fr !important;
+  align-items:start !important; height:auto !important; min-height:0 !important;
+}
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--info-container{ grid-column:1 !important; grid-row:1 / span 2 !important; align-self:stretch !important; padding-bottom:32px !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--steps{ grid-column:2 !important; grid-row:1 !important; width:auto !important; padding-bottom:0 !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .widgets-action-buttons{
+  grid-column:2 !important; grid-row:2 !important; position:static !important; inset:auto !important; justify-self:start !important; align-self:start !important;
+  margin:0 !important; padding:24px 32px 32px 28px !important; width:auto !important;
+}
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .widgets-action-buttons button{ min-height:48px !important; padding:0 24px !important; font-size:14px !important; }
+
+/* copy de acolhimento sob o titulo do cancelar (pseudo-elemento: nao mexe no DOM do GHL) */
+.hl-app:has(.sg-resched--before) .cancel-meeting-text::after{
+  content:"Tudo bem, acontece. Conte o motivo em uma linha; isso nos ajuda a melhorar.";
+  display:block; margin-top:4px; font-family:"Manrope","Helvetica Neue",Arial,sans-serif; font-size:13px; font-weight:500; line-height:1.55; color:#8A98AC; -webkit-text-fill-color:#8A98AC;
+}
+.hl-app:has(.sg-resched--before) .cancel-meeting-text + label{ margin-top:16px !important; }
+
+/* card de remarcar: lista de garantias */
+.sg-resched__perks{ list-style:none; margin:0 0 16px !important; padding:0 !important; display:flex; flex-wrap:wrap; gap:8px 24px; }
+.sg-resched__perks li{ display:inline-flex; align-items:center; gap:8px; margin:0; padding:0; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#8AC7FF; }
+.sg-resched__perks li svg{ flex:0 0 auto; color:#8AC7FF; }
+.hl-app .sg-resched__text{ margin:0 0 16px !important; max-width:52ch; }
+.sg-resched{ position:relative; overflow:hidden; }
+.sg-resched::before{ content:""; position:absolute; inset:0 0 auto 0; height:1px; background:linear-gradient(90deg,transparent,rgba(138,199,255,.6),transparent); pointer-events:none; }
+.hl-app.appointment_widgets-sm--revamp .sg-resched__perks{ margin-bottom:16px !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-action-buttons{ margin:24px 20px 32px !important; }
+@media (prefers-reduced-motion:reduce){ .hl-app a.sg-resched__btn{ transition:none !important; } }
+
+/* CANCELAMENTO · fechamento definitivo (altura = conteudo) e tipografia (seletores mais fortes que o `*{font-family:inherit}` do tema) */
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--inner,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--booking,
+.hl-app:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--container{ max-height:none !important; height:auto !important; min-height:0 !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--container{ width:100% !important; }
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp) .sg-resched .sg-resched__title{ font-family:"Fraunces",Georgia,serif !important; font-size:22px !important; font-weight:600 !important; letter-spacing:-.01em !important; }
+.hl-app.appointment_widgets-sm--revamp .sg-resched .sg-resched__title{ font-size:20px !important; }
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp) .sg-resched .sg-resched__perks li,
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp) .sg-resched .sg-resched__perks li span{ font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important; font-weight:600 !important; letter-spacing:.06em !important; text-transform:uppercase !important; color:#8AC7FF !important; -webkit-text-fill-color:#8AC7FF !important; }
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp):has(.sg-resched--before) .cancel-meeting-text{ font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:16px !important; font-weight:700 !important; letter-spacing:0 !important; margin:0 0 4px !important; }
+.hl-app:is(.appointment_widgets-xl--revamp,.appointment_widgets-sm--revamp) .sg-resched .sg-resched__btn{ font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; }
+.hl-app.appointment_widgets-xl--revamp:has(.hl_calendar_widget-cancellation-inner-padding) .appointment_widgets--revamp--steps{ max-width:none !important; justify-self:stretch !important; flex:none !important; box-sizing:border-box !important; width:100% !important; }
+.hl-app:has(.sg-resched--before) .cancel-meeting-text::after{ margin-bottom:16px; }
+.hl-app:has(.sg-resched--before) .cancel-meeting-text + label{ margin-top:0 !important; }
+
+/* TITULO DO SERVICO · sem orfao: 24px no desktop faz "Estrategica Comercial" caber inteiro na 2a linha
+   (a 26px passava de 280px e jogava "Comercial" sozinho; text-wrap:balance piorou, entao nao e usado).
+   Vale em todas as telas do fluxo (mesma hierarquia). Mobile ja era 24px e quebra em 2 linhas. */
+.hl-app.appointment_widgets-xl--revamp .widgets--service-name{ font-size:24px !important; line-height:1.18 !important; }
