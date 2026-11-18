@@ -413,3 +413,166 @@ html:has(.appointment_widgets--revamp--booking) body,
 .hl-app .widgets-slot-times-section .widgets-time-slots .widgets-time-slot.active > span{
   background:transparent !important; background-color:transparent !important;
 }
+
+/* ==============================================================================
+   DIAGRAMACAO · escala de espaco 4/8/12/16/24/32 · mesmo ritmo em todas as telas
+   (booking, formulario, confirmacao, cancelamento, remarcacao). Desktop (xl) e mobile (sm).
+   Fontes: Fraunces (titulos) · Manrope (corpo) · JetBrains Mono (rotulos).
+   ============================================================================== */
+/* --- colunas do cartao: mesmo respiro lateral e vertical (32) --- */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--info-container{ padding:32px 28px 24px 32px !important; }
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--steps{ padding:32px 32px 32px 28px !important; }
+
+/* --- titulo da etapa ("Selecione data e hora" / "Insira os detalhes" / "Cancelar reuniao?") --- */
+.hl-app.appointment_widgets-xl--revamp .label-select-date,
+.hl-app.appointment_widgets-xl--revamp .cancel-meeting-text,
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--steps h4{
+  font-family:"Fraunces",Georgia,serif !important; font-size:22px !important; line-height:1.25 !important;
+  font-weight:600 !important; letter-spacing:-.01em !important; color:#fff !important; -webkit-text-fill-color:#fff !important;
+  margin:0 0 16px !important;
+}
+
+/* --- calendario: cabecalho do mes, dias da semana (mono) e semana vazia --- */
+.hl-app.appointment_widgets-xl--revamp .vdpPeriodControls{ margin:0 auto 16px !important; }
+.hl-app.appointment_widgets-xl--revamp .vdpHeadCellContent{
+  font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important; font-weight:600 !important;
+  letter-spacing:.08em !important; text-transform:uppercase !important; color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important;
+}
+.hl-app.appointment_widgets-xl--revamp .vdpHeadCell{ padding-bottom:12px !important; }
+.vdpRow:not(:has(.vdpCell:not(.outOfRange))){ display:none !important; }
+.hl-app.appointment_widgets-xl--revamp .widgets-timezone-picker{ margin-top:24px !important; }
+
+/* --- horarios: altura 48, gap 12, sem margem solta; estado selecionado em vidro unico --- */
+.hl-app.appointment_widgets-xl--revamp .widgets-time-slots{ display:flex !important; flex-direction:column !important; flex-wrap:nowrap !important; align-items:stretch !important; gap:12px !important; padding:0 0 8px !important; }
+.hl-app.appointment_widgets-xl--revamp .widgets-time-slot{ margin:0 !important; width:100% !important; max-width:none !important; min-height:48px !important; height:48px !important; display:flex !important; align-items:center !important; }
+/* estado selecionado: o GHL pinta o <span> do horario com !important e seletor de 7 niveis; igualar para unificar o vidro */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps .widgets-slot-block .widgets-time-slots .widgets-time-slot.actived > span{
+  background:transparent !important; background-color:transparent !important; background-image:none !important;
+}
+
+/* --- FORMULARIO: titulo na mesma linha do booking, campos 48px, raio 12, termos em sentenca legivel --- */
+.hl-app.appointment_widgets-xl--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps.step-form{ margin-top:0 !important; }
+.hl-app.appointment_widgets-xl--revamp .form-builder--item input:not([type="checkbox"]),
+.hl-app.appointment_widgets-xl--revamp .email-input-wrapper,
+.hl-app.appointment_widgets-xl--revamp .iti input{
+  box-sizing:border-box !important; height:48px !important; min-height:48px !important; border-radius:12px !important;
+}
+.hl-app.appointment_widgets-xl--revamp .iti{ display:block !important; }
+.hl-app.appointment_widgets-xl--revamp textarea{ min-height:112px !important; border-radius:12px !important; padding:14px 16px !important; line-height:1.5 !important; }
+.hl-app.appointment_widgets-xl--revamp .form-builder--item label{ margin:0 0 8px !important; line-height:16px !important; }
+.hl-app.appointment_widgets-xl--revamp .terms-and-conditions{ align-items:flex-start !important; gap:12px !important; margin-top:8px !important; }
+.hl-app.appointment_widgets-xl--revamp .terms-and-conditions input[type="checkbox"]{ width:18px !important; height:18px !important; margin:2px 0 0 !important; flex:0 0 auto !important; accent-color:#4C90FF !important; border-radius:5px !important; }
+.hl-app.appointment_widgets-xl--revamp .terms-and-conditions *:not(input){
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:13px !important; line-height:1.55 !important;
+  letter-spacing:0 !important; text-transform:none !important; font-weight:500 !important; color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important;
+}
+/* botao de acao do rodape: peso e margem unicos em todas as telas (agendar / remarcar / cancelar) */
+.hl-app.appointment_widgets-xl--revamp .widgets-action-buttons{ padding:0 !important; margin:0 !important; }
+.hl-app.appointment_widgets-xl--revamp .widgets-action-buttons button,
+.hl-app.appointment_widgets-xl--revamp .widgets-action-buttons .hl_button{
+  min-height:44px !important; padding:0 24px !important; font-size:14px !important; line-height:1 !important; letter-spacing:.01em !important; border-radius:12px !important;
+}
+
+/* --- CONFIRMACAO: coluna centrada 520, ritmo 16/12/24, linhas de info em cartao, botoes de calendario regulares --- */
+.hl-app .appointment_widgets--revamp--confirmation > div{
+  max-width:520px !important; margin:0 auto !important; text-align:center !important;
+  display:flex !important; flex-direction:column !important; align-items:center !important;
+}
+.hl-app .appointment_widgets--revamp--confirmation .widgets-confirmation-icon{ margin:8px 0 16px !important; padding:0 !important; }
+.hl-app .appointment_widgets--revamp--confirmation .confirmation-message{ font-size:24px !important; line-height:1.25 !important; margin:0 0 12px !important; }
+.hl-app .appointment_widgets--revamp--confirmation .confirmation-invite-text{ font-size:14px !important; line-height:1.6 !important; margin:0 0 24px !important; max-width:460px !important; }
+.hl-app .appointment_widgets--revamp--confirmation .appointment_widgets--revamp--booking-info{ width:100% !important; text-align:left !important; margin:0 0 24px !important; box-sizing:border-box !important; }
+.hl-app .appointment_widgets--revamp--confirmation .hl_events-buttons,
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-options-container{ width:100% !important; justify-content:center !important; }
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-options-container{ gap:12px !important; margin:0 !important; }
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-button{ justify-content:center !important; min-width:136px !important; height:44px !important; box-sizing:border-box !important; padding:0 16px !important; }
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-button img{ width:18px !important; height:18px !important; object-fit:contain !important; }
+
+/* --- CANCELAMENTO / REMARCACAO: mesmo ritmo do booking (titulo 22/16, campo 12px de raio, rodape 44px) --- */
+.hl-app.appointment_widgets-xl--revamp .hl_calendar_widget-cancellation-inner-padding{ padding:0 !important; }
+.hl-app.appointment_widgets-xl--revamp .hl_cancellation_textarea{ min-height:144px !important; border-radius:12px !important; padding:14px 16px !important; line-height:1.5 !important; box-sizing:border-box !important; }
+.hl-app.appointment_widgets-xl--revamp .hl_calendar_widget-cancellation-inner-padding label{ display:block !important; margin:0 0 8px !important; line-height:16px !important; }
+.hl-app .appointment_widgets--revamp--confirmation > div{ width:100% !important; }
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-options-container{ flex-wrap:nowrap !important; }
+.hl-app .appointment_widgets--revamp--confirmation .add-calendar-options-container > div{ flex:0 0 auto !important; width:auto !important; margin:0 !important; }
+
+/* ============ DIAGRAMACAO · MOBILE (sm) · mesma escala 4/8/12/16/24/32, margens laterais 20 ============ */
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--info-container{ padding:24px 20px 0 !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--info{ width:100% !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--steps{ padding:24px 20px 32px !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--service-info img{ width:88px !important; height:88px !important; margin:0 0 16px !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets--service-name{ font-size:24px !important; line-height:1.2 !important; margin:0 0 8px !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--booking-info{ margin:16px 0 0 !important; width:100% !important; box-sizing:border-box !important; }
+.hl-app.appointment_widgets-sm--revamp .label-select-date,
+.hl-app.appointment_widgets-sm--revamp .cancel-meeting-text,
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--steps h4{
+  font-family:"Fraunces",Georgia,serif !important; font-size:20px !important; line-height:1.25 !important; font-weight:600 !important;
+  letter-spacing:-.01em !important; color:#fff !important; -webkit-text-fill-color:#fff !important; margin:0 0 16px !important;
+}
+.hl-app.appointment_widgets-sm--revamp .vdpPeriodControls{ margin:0 auto 16px !important; }
+.hl-app.appointment_widgets-sm--revamp .vdpHeadCellContent{
+  font-family:"JetBrains Mono",ui-monospace,monospace !important; font-size:11px !important; font-weight:600 !important;
+  letter-spacing:.06em !important; text-transform:uppercase !important; color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important;
+}
+.hl-app.appointment_widgets-sm--revamp .vdpHeadCell{ padding-bottom:8px !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-timezone-picker{ margin-top:24px !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slots{ display:grid !important; grid-template-columns:1fr 1fr !important; gap:12px !important; padding:0 0 8px !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slot{ margin:0 !important; width:100% !important; max-width:none !important; min-height:48px !important; height:48px !important; display:flex !important; align-items:center !important; }
+.hl-app.appointment_widgets-sm--revamp .form-builder--item input:not([type="checkbox"]),
+.hl-app.appointment_widgets-sm--revamp .email-input-wrapper,
+.hl-app.appointment_widgets-sm--revamp .iti input{ box-sizing:border-box !important; height:48px !important; min-height:48px !important; border-radius:12px !important; }
+.hl-app.appointment_widgets-sm--revamp .iti{ display:block !important; }
+.hl-app.appointment_widgets-sm--revamp textarea,
+.hl-app.appointment_widgets-sm--revamp .hl_cancellation_textarea{ min-height:120px !important; border-radius:12px !important; padding:14px 16px !important; line-height:1.5 !important; box-sizing:border-box !important; }
+.hl-app.appointment_widgets-sm--revamp .terms-and-conditions{ align-items:flex-start !important; gap:12px !important; margin-top:8px !important; }
+.hl-app.appointment_widgets-sm--revamp .terms-and-conditions *:not(input){
+  font-family:"Manrope","Helvetica Neue",Arial,sans-serif !important; font-size:13px !important; line-height:1.55 !important;
+  letter-spacing:0 !important; text-transform:none !important; font-weight:500 !important; color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important;
+}
+.hl-app.appointment_widgets-sm--revamp .widgets-action-buttons{ padding:0 !important; margin:24px 20px 32px !important; width:calc(100% - 40px) !important; box-sizing:border-box !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-action-buttons button,
+.hl-app.appointment_widgets-sm--revamp .widgets-action-buttons .hl_button{ width:100% !important; min-height:48px !important; padding:0 24px !important; font-size:15px !important; border-radius:12px !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .add-calendar-options-container{ flex-wrap:wrap !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment-widgets-service-booking-info{ padding:0 !important; margin:0 !important; }
+/* fuso horario: o input interno do multiselect herdava a borda de campo e desenhava uma barra vertical solta */
+.hl-app .widgets-timezone-picker .multiselect__input{ border:0 !important; background:transparent !important; box-shadow:none !important; min-height:0 !important; height:auto !important; }
+/* mobile: horarios no mesmo vidro do desktop (o GHL desenha borda azul no <span>) + cabecalho do dia */
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slot{ background:#0E1826 !important; border:1px solid #28394D !important; border-radius:12px !important; overflow:hidden !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slot > span{ border:0 !important; background:transparent !important; color:#8AC7FF !important; -webkit-text-fill-color:#8AC7FF !important; width:100% !important; justify-content:center !important; font-weight:600 !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slot > .btn.disabled-slot{ display:none !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--selected-slot-info .selected-day{
+  font-family:"Fraunces",Georgia,serif !important; font-size:20px !important; font-weight:600 !important; color:#fff !important; -webkit-text-fill-color:#fff !important; line-height:1.25 !important;
+}
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--selected-slot-info .selected-date{ font-size:13px !important; margin-top:4px !important; color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps .widgets-slot-block .widgets-time-slots .widgets-time-slot > span{
+  border:0 !important; border-width:0 !important; border-color:transparent !important; box-shadow:none !important;
+}
+/* "Duracao : 60 min" vinha rgba(16,24,40,.6) sobre navy (invisivel) */
+.hl-app .selected-appointment-date, .hl-app .selected-appointment-date *{
+  color:#8A98AC !important; -webkit-text-fill-color:#8A98AC !important; font-size:13px !important; text-align:center !important;
+}
+.hl-app .selected-appointment-date{ margin:0 0 16px !important; }
+/* mobile · slot selecionado: horario | Selecionar em 50/50, sem corte */
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--booking .appointment_widgets--revamp--steps .widgets-slot-block .widgets-time-slots .widgets-time-slot.actived > span{ width:auto !important; flex:1 1 50% !important; }
+.hl-app.appointment_widgets-sm--revamp .widgets-time-slot.actived > .btn.selected-slot{ flex:1 1 50% !important; display:flex !important; align-items:center !important; justify-content:center !important; padding:0 !important; }
+.hl-app .widgets-time-slot.actived > .btn.selected-slot{ position:static !important; margin:0 !important; width:auto !important; height:100% !important; background:transparent !important; border:0 !important; box-shadow:none !important; }
+/* mobile · formulario: remove o gutter extra do GHL (20px) para campos e titulo alinharem ao cartao de info */
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--booking #_builder-form .fields-container{ padding:0 !important; margin-left:0 !important; margin-right:0 !important; }
+.hl-app.appointment_widgets-sm--revamp .menu-field-wrap,
+.hl-app.appointment_widgets-sm--revamp .form-field-container{ padding-left:0 !important; padding-right:0 !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--steps h4{ padding:0 !important; }
+/* checkbox dos termos · mesma caixa no desktop e no mobile (controle com caixa no repouso) */
+.hl-app .terms-and-conditions input[type="checkbox"]{
+  -webkit-appearance:none !important; appearance:none !important; width:18px !important; height:18px !important; min-width:18px !important;
+  margin:2px 0 0 !important; flex:0 0 auto !important; border-radius:5px !important; background:#0E1826 !important;
+  border:1px solid #34495F !important; cursor:pointer !important; position:relative !important;
+}
+.hl-app .terms-and-conditions input[type="checkbox"]:checked{
+  background:#4C90FF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-6.5' fill='none' stroke='%2307121F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat !important;
+  border-color:#4C90FF !important;
+}
+.hl-app .terms-and-conditions input[type="checkbox"]:focus-visible{ outline:0 !important; box-shadow:0 0 0 3px rgba(79,166,255,.22) !important; }
+.hl-app.appointment_widgets-sm--revamp .hl_calendar_widget-cancellation-inner-padding{ padding:0 !important; }
+.hl-app.appointment_widgets-sm--revamp .hl_calendar_widget-cancellation-inner-padding label{ display:block !important; margin:0 0 8px !important; line-height:16px !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .add-calendar-options-container > div{ flex:1 1 100% !important; width:100% !important; }
+.hl-app.appointment_widgets-sm--revamp .appointment_widgets--revamp--confirmation .add-calendar-button{ width:100% !important; }
